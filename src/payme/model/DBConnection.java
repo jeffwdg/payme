@@ -75,7 +75,6 @@ public class DBConnection {
 	    return success;
 	}
 
-	
 	public boolean createAdminTable() throws SQLException, ClassNotFoundException {
 		String ADMIN_TABLE = "CREATE TABLE IF NOT EXISTS admin_tbl ( " + " id int NOT NULL AUTO_INCREMENT , " +" username VARCHAR(15) NOT NULL, password VARCHAR(15) NOT NULL, type VARCHAR(50) NOT NULL, date_added TIMESTAMP NOT NULL ,PRIMARY KEY (id)"+")";
 		 

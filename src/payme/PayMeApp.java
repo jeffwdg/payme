@@ -12,8 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.GroupLayout.Group;
 
 import payme.model.DBConnection;
+import payme.view.Dashboard;
 import payme.view.Dashboard.DashboardPanel;
 
 import javafx.application.Application;
@@ -21,19 +23,30 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+
 import javafx.stage.Stage;
+
 
 public class PayMeApp extends Application {
 
@@ -48,25 +61,25 @@ public class PayMeApp extends Application {
     @Override
     public void start(final Stage primaryStage)  throws ClassNotFoundException, SQLException  {
     	primaryStage.setTitle("PayMe ");
-    	Application.setUserAgentStylesheet(getClass().getResource("/assets/sample.css")
-    	        .toExternalForm());
     	
+    	 Application.setUserAgentStylesheet(getClass().getResource("/assets/sample.css").toExternalForm());
+    	 
     	Image icon = new Image(getClass().getResourceAsStream("/assets/tasktimer.png"));
     	primaryStage.getIcons().add(icon);
     	primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(500);
         
+        final GridPane homegrid = new GridPane();
+    	homegrid.setAlignment(Pos.TOP_LEFT);
+    	homegrid.setHgap(4);
+    	homegrid.setVgap(4);
+    	homegrid.setPadding(new Insets(2, 2, 2, 2));
+    	
     	final GridPane grid = new GridPane();
     	grid.setAlignment(Pos.CENTER);
     	grid.setHgap(10);
     	grid.setVgap(10);
     	grid.setPadding(new Insets(25, 25, 25, 25));
-    	
-    	final GridPane homegrid = new GridPane();
-    	homegrid.setAlignment(Pos.BOTTOM_LEFT);
-    	homegrid.setHgap(4);
-    	homegrid.setVgap(4);
-    	homegrid.setPadding(new Insets(2, 2, 2, 2));
     	
  
     	Button btn = new Button("Sign in");
@@ -86,7 +99,6 @@ public class PayMeApp extends Application {
     	primaryStage.setScene(scene);
        	
        
-  
     	Text scenetitle = new Text("PayME - Simple Payroll Application");
     	scenetitle.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 20));
     	grid.add(scenetitle, 0, 0, 2, 1);
@@ -107,8 +119,6 @@ public class PayMeApp extends Application {
     	pwBox.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 14));
     	grid.add(pwBox, 1, 2);
     	
-       
-        
         
     	//login
     	btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -140,14 +150,21 @@ public class PayMeApp extends Application {
     				
         	    	 if(created == true && admincreated == true){
             	    	 if(userN.isEmpty() && pass.isEmpty()){
-        					 actiontarget.setText("Please enter username and password"+userN+pass);
+        					 actiontarget.setText("Please enter username and password");
         				 } 
             	    	 else if(loggedin == true)
         	    		 {	
         	    			 actiontarget.setText("Login successful");
-        	    			 primaryStage.hide();
-        	    			
-        	    				
+        	    			 //primaryStage.hide();
+        	    			 BorderPane root = new BorderPane();
+        	    			 Dashboard d = new Dashboard();
+
+        	    			 Scene dscene = new Scene(root, 900, 625);
+        	    		     primaryStage.setScene(dscene);
+        	    		     d.setDashboard(root, homegrid, primaryStage);   
+        	    		     
+        	    		     
+        	    			 /*
         	    			  JFrame mainJFrame = new JFrame("PayMe - Dashboard");
         	                  mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	                  mainJFrame.setTitle("PayMe - Dashboard");
@@ -181,11 +198,7 @@ public class PayMeApp extends Application {
         	                  DashboardPanel myTabJPanel = new DashboardPanel();
         	                  mainJFrame.add(myTabJPanel, BorderLayout.CENTER);
         	                  mainJFrame.setVisible(true);
- 
-        	                 
-        	                 
-
-        	    			 
+	 						*/
         	    		 }else{actiontarget.setText("Login unsuccessful");}  
         	    	 }else{ actiontarget.setText("Employees and Admin table created");} 
 	
@@ -197,7 +210,9 @@ public class PayMeApp extends Application {
     }
     
     
-     
+     public void showDashboard(Stage primaryStage){
+    	 
+     }
  
     
     

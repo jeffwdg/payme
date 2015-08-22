@@ -1,7 +1,10 @@
-.background, .root{
-    -fx-background-color: #01acd8;
+.background {
+    -fx-background-color: #00aba9;
 }
 
+.root{
+  -fx-background-color: #00aba9;
+}
 .header{
     -fx-font-size: 3.5em;
     -fx-font-family: "Segoe UI Semilight";
@@ -72,6 +75,48 @@
 }
 
 
+/*******************************************************************************
+ *                                                                             *
+ * Tab Button                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+.tab, .menu {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #ccc;
+    -fx-border-width: 0.3;
+    -fx-background-radius: 0;
+    /*-fx-background-color: #ffffff;*/
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: black;
+}
+
+.tab:hover, .menu:hover{
+    -fx-background-color: #fff;
+}
+
+.tab:pressed, .tab:default:hover:pressed
+{
+  -fx-background-color: #fff;
+  -fx-text-fill: #000;
+}
+.tab:selected{
+	 -fx-background-color: #01acd8;;
+  	 -fx-text-fill: #fff;
+}
+.tab-pane  {
+    -fx-background-color: #ccc;
+    -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 0);
+}
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 1 0;
+  
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em;  
+}
+.menubar{
+  -fx-background-color: #fff;
+}
 /*******************************************************************************
  *                                                                             *
  * Toggle Button                                                               *

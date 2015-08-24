@@ -24,37 +24,36 @@
  ******************************************************************************/
 
 .button {
-    -fx-padding: 5 22 5 22;
-
-    -fx-border-color: transparent;
-    -fx-border-width: 2;
-
+    -fx-padding: 5 10 5 10;
+    -fx-border-color: #fff;
+    -fx-border-width: 1;
     -fx-background-radius: 0;
-
-    -fx-background-color: #ffffff;
-
+    -fx-background-color:  #00aba9;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 11pt;
-    -fx-text-fill: black;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #fff;
+    -fx-indent: 5;
 }
 
 .button:hover{
-    -fx-background-color: #d8d8d8;
+    -fx-background-color: #00aba9;
+    -fx-border-color: #fff;
+    -fx-text-fill: white;
 }
 
 .button:pressed, .button:default:hover:pressed
 {
-  -fx-background-color: black;
+  -fx-background-color: #00aba9;
   -fx-text-fill: white;
 }
 
 .button:focused
 {
     -fx-border-color: transparent, black;
-    -fx-border-width: 1, 1;
+    -fx-border-width: 1;
     -fx-border-style: solid, segments(1, 2);
     -fx-border-radius: 0, 0;
-    -fx-border-insets: 1 1 1 1, 0;
+   
 }
 
 .button:disabled, .button:default:disabled
@@ -67,11 +66,12 @@
 .button:default
 {
     -fx-background-color: #008287;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #fff;
 }
 
 .button:default:hover{
-    -fx-background-color: #219297;
+    -fx-background-color: #008287;
+    -fx-text-fill: white;
 }
 
 
@@ -80,39 +80,68 @@
  * Tab Button                                                                 *
  *                                                                             *
  ******************************************************************************/
-
-.tab, .menu {
+.tab .tab-label{
+	-fx-text-fill: #00aba9;
+}
+.tab   {
+    -fx-padding: 5 22 5 22;
+  
+    -fx-background-radius: 0;
+    /*-fx-background-color: #ffffff;*/
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #fff;
+    -fx-background-color: #fff;
+}
+.menu {
     -fx-padding: 5 22 5 22;
     -fx-border-color: #ccc;
     -fx-border-width: 0.3;
     -fx-background-radius: 0;
     /*-fx-background-color: #ffffff;*/
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 9pt;
-    -fx-text-fill: black;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #fff;
+    -fx-background-color: #00aba9;
 }
 
 .tab:hover, .menu:hover{
     -fx-background-color: #fff;
+    -fx-text-fill:  #00aba9;
 }
 
 .tab:pressed, .tab:default:hover:pressed
 {
-  -fx-background-color: #fff;
-  -fx-text-fill: #000;
+  	-fx-background-color: #fff;
+  	-fx-text-fill:  #00aba9;
 }
+
 .tab:selected{
-	 -fx-background-color: #01acd8;;
+	 -fx-background-color:  #00aba9;
   	 -fx-text-fill: #fff;
 }
+.tab:selected .tab-label{
+	-fx-text-fill: #fff;
+}
 .tab-pane  {
-    -fx-background-color: #ccc;
+    -fx-background-color: #ddd;
+    -fx-padding: 3;
+    -fx-border-color: #ccc;
     -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 0);
 }
 .tab-pane:top *.tab-header-area {
+	-fx-padding: 3;
     -fx-background-insets: 0, 0 0 1 0;
-  
+     -fx-border-color: #ccc;
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em;  
+}
+.tab-content-area  {
+    -fx-background-radius: 5 5 5 5;
+    -fx-padding:  10 5 10 5;
+    -fx-border-width: 0px;
+    -fx-font-size: 11pt;
+    -fx-background-color: #00aba9;
+    -fx-text-fill: #fff;
 }
 .menubar{
   -fx-background-color: #fff;

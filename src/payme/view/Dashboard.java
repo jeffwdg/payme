@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.net.URL;
 
 import javax.swing.GroupLayout.Group;
@@ -150,8 +151,18 @@ public class Dashboard {
          TextField searchUser = new TextField();
      	 searchUser.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 14));
      	 Button searchUserBtn = new Button("Search");
-         Button importCSV = new Button("Import CSV");
- 		
+         final Button importCSV = new Button("Import CSV");
+         
+         importCSV.addEventHandler(MouseEvent.MOUSE_CLICKED,
+        	        new EventHandler<MouseEvent>() {
+        	 
+             @Override
+             public void handle(MouseEvent e) {
+            	 ImportEmployees form = new ImportEmployees();
+     			 form.setVisible(true);
+             }
+        });
+         
          tab2grid.add(searchUser, 0,0);
          tab2grid.add(searchUserBtn, 1,0);
          tab2grid.add(importCSV, 2,0);
@@ -166,7 +177,7 @@ public class Dashboard {
          
  
 	 }
- 
+	 
 
 	 
 

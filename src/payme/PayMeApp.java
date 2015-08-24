@@ -62,7 +62,7 @@ public class PayMeApp extends Application {
     public void start(final Stage primaryStage)  throws ClassNotFoundException, SQLException  {
     	primaryStage.setTitle("PayMe ");
     	
-    	 Application.setUserAgentStylesheet(getClass().getResource("/assets/sample.css").toExternalForm());
+    	Application.setUserAgentStylesheet(getClass().getResource("/assets/sample.css").toExternalForm());
     	 
     	Image icon = new Image(getClass().getResourceAsStream("/assets/tasktimer.png"));
     	primaryStage.getIcons().add(icon);

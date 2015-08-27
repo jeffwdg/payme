@@ -15,10 +15,12 @@ import javax.swing.JMenuItem;
 import javax.swing.GroupLayout.Group;
 
 import payme.model.DBConnection;
+import payme.model.Payroll;
 import payme.view.Dashboard;
-import payme.view.Dashboard.DashboardPanel;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -32,8 +34,11 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -51,6 +56,9 @@ import javafx.stage.Stage;
 public class PayMeApp extends Application {
 
 	JLabel statusbar;
+
+
+ 
 	
     public static void main(String args[])
     {
@@ -119,7 +127,9 @@ public class PayMeApp extends Application {
     	pwBox.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 14));
     	grid.add(pwBox, 1, 2);
     	
-        
+    	
+    	 
+	    
     	//login
     	btn.setOnAction(new EventHandler<ActionEvent>() {
     		
@@ -136,7 +146,7 @@ public class PayMeApp extends Application {
     	    		try {
     					created = c.createEmployeeTable();
     					admincreated = c.createAdminTable();
-    					
+    					c.createTimePeriodTable();
     						 loggedin = c.login(userN, pass);
  
     					
@@ -158,12 +168,11 @@ public class PayMeApp extends Application {
         	    			 //primaryStage.hide();
         	    			 BorderPane root = new BorderPane();
         	    			 Dashboard d = new Dashboard();
-
+        	    			 
         	    			 Scene dscene = new Scene(root, 900, 625);
         	    		     primaryStage.setScene(dscene);
         	    		     d.setDashboard(root, homegrid, primaryStage);   
-        	    		     
-        	    		     
+        	    		    
         	    			 /*
         	    			  JFrame mainJFrame = new JFrame("PayMe - Dashboard");
         	                  mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -209,10 +218,7 @@ public class PayMeApp extends Application {
         primaryStage.show();
     }
     
-    
-     public void showDashboard(Stage primaryStage){
-    	 
-     }
+ 
  
     
     

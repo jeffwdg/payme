@@ -136,8 +136,74 @@ public class DBConnection {
   
 	}
 
+	public boolean createTimePeriodTable() throws SQLException, ClassNotFoundException {
+		String TIMECARD_TABLE = "CREATE TABLE IF NOT EXISTS payrolltime_tbl ( " + " id INT NOT NULL AUTO_INCREMENT, " +" payStartPeriod VARCHAR(15) NOT NULL, payEndPeriod VARCHAR(15) NOT NULL,  PRIMARY KEY (id)"+")";
+		 
+	    boolean success = false;
+	    
+	    Class.forName(jdbcDriver);
+	    Connection con = null;
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost/payme?user=root&password=root");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    Statement st = null;
+		try {
+			st = con.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    try {
+			st.executeUpdate(TIMECARD_TABLE);
+			success= true;
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    
+	    return success;
+	}
+	
+	public boolean insetTimeCard(String p_startP, String p_endP) throws SQLException, ClassNotFoundException{
 
- 
+		String sql = "INSERT INTO payrolltime_tbl "
+				+ "(payStartPeriod, payEndPeriod) "
+				+ "VALUES ('" + p_startP + "','"
+				+ p_endP + "') ";
+		
+		
+	    boolean success = false;
+	    
+	    Class.forName(jdbcDriver);
+	    Connection con = null;
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost/payme?user=root&password=root");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    Statement st = null;
+		try {
+			st = con.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    try {
+	    	st.execute(sql); 
+			success= true;
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    
+	    return success;
+	    
+		
+	}
 
 }
 

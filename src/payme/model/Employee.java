@@ -4,15 +4,15 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Employee {
 	
-	private final SimpleStringProperty firstName;
-    private final SimpleStringProperty lastName;
-    private final SimpleStringProperty email;
+	SimpleStringProperty firstName;
+    SimpleStringProperty lastName;
+    SimpleStringProperty email;
 	float hourly_rate;
 	float daily_hours;
 	double OT_rate;
 	double OT_hours;
  
-    private Employee(String fName, String lName, String email) {
+    public Employee(String fName, String lName, String email) {
         this.firstName = new SimpleStringProperty(fName);
         this.lastName = new SimpleStringProperty(lName);
         this.email = new SimpleStringProperty(email);

@@ -188,33 +188,15 @@ public class Dashboard {
 	                importTimeGrid.add(timeEndperiod, 0, 1);
 	                importTimeGrid.add(tcEndDatePicker, 1,1);
 	                importTimeGrid.add(importTimeCSV, 1,2);
-	                LocalDate sdate = null;
-	                
-	                if (tcStartDatePicker != null  ) {
-	                	sdate = tcStartDatePicker.getValue();
-	                	LocalDate edate = tcEndDatePicker.getValue();
-	                }  
-	                
-	                
-	                
-	              
-	                final String startDate = sdate.toString();
-		            //final String endDate  = edate.toString();
-		               
+	         
+	                	               
 	                dialogVbox.getChildren().add(importTimeGrid);
 	                importTimeCSV.addEventHandler(MouseEvent.MOUSE_CLICKED,
-	              	        new EventHandler<MouseEvent>() {
-		                 
+	              	        new EventHandler<MouseEvent>() {	                 
 			          
 	         	          @Override
 	         	          public void handle(MouseEvent e) {
-	         	        	  DBConnection db = new DBConnection();
-	         	        	  try {
-								 db.insetTimeCard(startDate, startDate);
-							} catch (ClassNotFoundException | SQLException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+	         	        	 
 	         	          }
 	                  });
 	                

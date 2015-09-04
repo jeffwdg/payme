@@ -57,14 +57,10 @@ public class PayMeApp extends Application {
 
 	JLabel statusbar;
 
-
- 
-	
     public static void main(String args[])
     {
     	 launch(args);
     }
-    
     
     @Override
     public void start(final Stage primaryStage)  throws ClassNotFoundException, SQLException  {
@@ -89,7 +85,8 @@ public class PayMeApp extends Application {
     	grid.setVgap(10);
     	grid.setPadding(new Insets(25, 25, 25, 25));
     	
- 
+    	
+    	//SET Login Page
     	Button btn = new Button("Sign in");
     	HBox hbBtn = new HBox(10);
     	hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
@@ -106,7 +103,6 @@ public class PayMeApp extends Application {
     	final Scene scene = new Scene(grid, 900, 625);
     	primaryStage.setScene(scene);
        	
-       
     	Text scenetitle = new Text("PayME - Simple Payroll Application");
     	scenetitle.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 20));
     	grid.add(scenetitle, 0, 0, 2, 1);
@@ -127,10 +123,9 @@ public class PayMeApp extends Application {
     	pwBox.setFont(Font.font("Segoe UI", FontWeight.NORMAL, 14));
     	grid.add(pwBox, 1, 2);
     	
-    	
-    	 
+
 	    
-    	//login
+    	//On click login button
     	btn.setOnAction(new EventHandler<ActionEvent>() {
     		
     	    @Override
@@ -147,7 +142,8 @@ public class PayMeApp extends Application {
     					created = c.createEmployeeTable();
     					admincreated = c.createAdminTable();
     					c.createTimePeriodTable();
-    						 loggedin = c.login(userN, pass);
+    					c.createTimeHoursTable();
+    					loggedin = c.login(userN, pass);
  
     					
     				} catch (ClassNotFoundException e1) {
@@ -171,43 +167,14 @@ public class PayMeApp extends Application {
         	    			 
         	    			 Scene dscene = new Scene(root, 900, 625);
         	    		     primaryStage.setScene(dscene);
-        	    		     d.setDashboard(root, homegrid, primaryStage);   
+        	    		     try {
+								d.setDashboard(root, homegrid, primaryStage);
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}   
         	    		    
-        	    			 /*
-        	    			  JFrame mainJFrame = new JFrame("PayMe - Dashboard");
-        	                  mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        	                  mainJFrame.setTitle("PayMe - Dashboard");
-        	                  mainJFrame.setSize(900, 625);
-        	                  mainJFrame.setMinimumSize(new Dimension(800, 500));
-        	                  mainJFrame.setLocationRelativeTo(null);
-        	                  
-        	                  JMenuBar menubar = new JMenuBar();
-        	                  JMenu filemenu = new JMenu("File");
-        	          	      JMenu settingsmenu = new JMenu("Settings");
-        	          	      mainJFrame.setJMenuBar(menubar);
-        	          	      menubar.add(filemenu);
-        	          	      menubar.add(settingsmenu);
-        	          	      
-        	          	      JMenuItem adminmi= new JMenuItem("Admin");
-        	        	      JMenuItem passwordmi = new JMenuItem("Reset Password");
-        	        	      final JMenuItem aboutmi = new JMenuItem("About");
-        	        	      filemenu.add(adminmi);
-        	        	      filemenu.add(passwordmi);
-        	        	      settingsmenu.add(aboutmi);
-        	          	      
-        	 
-        	                  BufferedImage image;
-  							  try {
-  								image = ImageIO.read(getClass().getResource("/assets/tasktimer.png"));
-  								mainJFrame.setIconImage(image);
-  							  } catch (IOException e1) {
-  								// TODO Auto-generated catch block
-  								e1.printStackTrace();
-  							  }
-        	                  DashboardPanel myTabJPanel = new DashboardPanel();
-        	                  mainJFrame.add(myTabJPanel, BorderLayout.CENTER);
-        	                  mainJFrame.setVisible(true);
-	 						*/
+        	    			 
         	    		 }else{actiontarget.setText("Login unsuccessful");}  
         	    	 }else{ actiontarget.setText("Employees and Admin table created");} 
 	

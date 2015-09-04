@@ -6,24 +6,36 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 
 public class Payroll {
 	
-	String jdbcDriver = "com.mysql.jdbc.Driver";
-    String dbName = "payme";
+ 
     private final SimpleStringProperty payNum;
     private final SimpleStringProperty payPeriod;
     private final SimpleStringProperty endPayPeriod;
-    private final SimpleStringProperty employeeID;
-
-    public Payroll(String pNum, String pPeriod,String epPeriod, String empID) {
-        this.payNum = new SimpleStringProperty(pNum);
-        this.payPeriod = new SimpleStringProperty(pPeriod);
-        this.endPayPeriod = new SimpleStringProperty(epPeriod);
-        this.employeeID = new SimpleStringProperty(empID);
+    //private final SimpleStringProperty employeeID;
+    
+   
+    public Payroll(String pNum, String pPeriod,String epPeriod) {
+    	 this.payNum = new SimpleStringProperty(pNum);
+         this.payPeriod = new SimpleStringProperty(pPeriod);
+         this.endPayPeriod = new SimpleStringProperty(epPeriod);
+        //this.employeeID = new SimpleStringProperty(empID);
     }
+	 
+  
+    /*
+	public Payroll(String[] x) {
+		// TODO Auto-generated constructor stub
+		 this.payNum = new SimpleStringProperty(x[0]);
+	        this.payPeriod = new SimpleStringProperty(x[1]);
+	        this.endPayPeriod = new SimpleStringProperty(x[2]);
+	}
+     */
 
-    public String getPayNum() {
+
+	public String getPayNum() {
         return payNum.get();
     }
 
@@ -45,14 +57,14 @@ public class Payroll {
     public void setEndPayPeriod(String epPeriod) {
     	endPayPeriod.set(epPeriod);
     }
-
+    /*
     public String getEmployeeID() {
         return employeeID.get();
     }
 
     public void setEmployeeID(String empID) {
     	employeeID.set(empID);
-    }
+    }*/
 
 	
 
